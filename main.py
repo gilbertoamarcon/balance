@@ -98,6 +98,15 @@ def get_thres(arr):
 		std *= -1
 	return mean+2*std
 
+def total_small(trs,entry):
+
+	# Computing the threshold
+	lst = [t[entry] for t in trs]
+	thres = get_thres(lst)
+
+	# Filtering dictionary
+	return sum([t[entry] for t in trs if abs(t[entry]) < abs(thres)])
+
 def filter_thres(trs,entry):
 
 	# Computing the threshold
@@ -146,6 +155,8 @@ def main():
 				continue
 
 	print type_histogram(trs)
+	print 'Total small positive: %9.3f' % total_small(trs,'pval')
+	print 'Total small negative: %9.3f' % total_small(trs,'nval')
 	gen_plot(trs,args.output)
 
 
