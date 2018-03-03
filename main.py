@@ -44,7 +44,7 @@ def show_or_store(outputs=[]):
 		for f in outputs:
 			plt.savefig(f)
 
-def gen_plot(trs,output_filename):
+def gen_plot(trs,output_filename=[]):
 
 	# Plot params
 	matplotlib.rcParams.update({'font.size': 8})
@@ -131,7 +131,7 @@ def main():
 	parser.add_argument(
 			'-o','--output',
 			nargs='*',
-			required=True,
+			default=[],
 			help='Output file name.'
 		)
 	args = parser.parse_args()
